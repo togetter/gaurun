@@ -163,7 +163,7 @@ func pushNotificationAndroid(req RequestGaurunNotification) error {
 
 	token := req.Tokens[0]
 
-	notification := &gcm.Notification{Body: req.Message}
+	notification := &gcm.Notification{Body: req.Message, Sound: req.Sound}
 	msg := gcm.NewMessageWithNotification(data, notification, token)
 	msg.CollapseKey = req.CollapseKey
 	msg.DelayWhileIdle = req.DelayWhileIdle
