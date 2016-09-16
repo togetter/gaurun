@@ -22,7 +22,7 @@ imports:
   - require
   - suite
 - name: github.com/togetter/gaurun
-  version: e00ff34b0d354c7e399699a2439bb16ee3228546
+  version: e76e82fe2953289b6196c81e21b407bbe7f596ce
   subpackages:
   - gaurun
 - name: github.com/togetter/gcm
