@@ -29,6 +29,8 @@ type RequestGaurunNotification struct {
 	// iOS
 	Badge            int          `json:"badge,omitempty"`
 	Sound            string       `json:"sound,omitempty"`
+	Icon             string       `json:"icon,omitempty"`
+	Color            string       `json:"color,omitempty"`
 	ContentAvailable bool         `json:"content_available,omitempty"`
 	Expiry           int          `json:"expiry,omitempty"`
 	Retry            int          `json:"retry,omitempty"`
@@ -163,7 +165,13 @@ func pushNotificationAndroid(req RequestGaurunNotification) error {
 
 	token := req.Tokens[0]
 
-	notification := &gcm.Notification{Body: req.Message, Sound: req.Sound}
+	notification := &gcm.Notification{
+		Body:  req.Message,
+		Sound: req.Sound,
+		Icon:  req.Icon,
+		Color: req.Color,
+	}
+
 	msg := gcm.NewMessageWithNotification(data, notification, token)
 	msg.CollapseKey = req.CollapseKey
 	msg.DelayWhileIdle = req.DelayWhileIdle
